@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - uses: jfrog/setup-jfrog-cli@v2
         env:
-          JF_ARTIFACTORY_1: ${{ ARTIFACTORY_CLI_SECRET }}
+          JF_ARTIFACTORY_1: ${{ secrets.ARTIFACTORY_CLI_SECRET }}
       - name: Download
         run: ./doxygen-download.sh ${{ github.event.inputs.version }}
       - name: Upload
