@@ -20,6 +20,6 @@ jobs:
         env:
           JF_ARTIFACTORY_1: ${{ secrets.ARTIFACTORY_CLI_SECRET }}
       - name: Download
-        run: ./doxygen-download.sh ${{ github.event.inputs.version }}
+        run: ./download-doxygen.sh ${{ github.event.inputs.version }}
       - name: Upload
         run: jfrog rt u ${{ github.event.inputs.version }}  generic-release-mirror/doxygen/
