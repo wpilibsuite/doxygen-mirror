@@ -22,4 +22,4 @@ jobs:
       - name: Download
         run: ./download-doxygen.sh ${{ github.event.inputs.version }}
       - name: Upload
-        run: jfrog rt u ${{ github.event.inputs.version }}  generic-release-mirror/doxygen/
+        run: jfrog rt u ${{ github.event.inputs.version }}/  generic-release-mirror/doxygen/
