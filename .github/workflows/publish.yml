@@ -1,0 +1,25 @@
+name: Publish to Artifactory
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Doxygen version `rel-1.9.2`'     
+        required: true
+        default: 'rel-x.y.z'
+
+jobs:
+  publish:
+    name: "Publish"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: jfrog/setup-jfrog-cli@v2
+        env:
+          JF_ARTIFACTORY_1: ${{ ARTIFACTORY_CLI_SECRET }}
+      - name: Download
+        run: ./doxygen-download.sh ${{ github.event.inputs.version }}
+      - name: Upload
+        run: jfrog rt u ${{ github.event.inputs.version }}  generic-release-mirror/doxygen/
