@@ -12,6 +12,8 @@ jobs:
   publish:
     name: "Publish"
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.inputs.version }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,6 +22,6 @@ jobs:
         env:
           JF_ENV_1: ${{ secrets.ARTIFACTORY_CLI_SECRET }}
       - name: Download
-        run: ./download-doxygen.sh ${{ github.event.inputs.version }}
+        run: ./download-doxygen.sh "$VERSION"
       - name: Upload
         run: jfrog rt u ${{ github.event.inputs.version }}/  generic-release-mirror/doxygen/
