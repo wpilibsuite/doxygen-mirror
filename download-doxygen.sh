@@ -3,7 +3,7 @@
 BASE_URL="https://sourceforge.net/projects/doxygen/rss?path=/"
 
 
-OUTPATH=`pwd`/$1
+OUTPATH=`pwd`/`echo $1 | sed 's|rel-\(.*\)\.\(.*\)\.\(.*\)|Release_\1_\2_\3|'`
 mkdir $OUTPATH
 
 # Inspired by https://stackoverflow.com/a/52351243

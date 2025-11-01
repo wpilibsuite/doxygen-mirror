@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Doxygen version `Release_1_15_0`'
+        description: 'Doxygen version `rel-1.9.2`'     
         required: true
-        default: 'Release_x_y_z'
+        default: 'rel-x.y.z'
 
 jobs:
   publish:
