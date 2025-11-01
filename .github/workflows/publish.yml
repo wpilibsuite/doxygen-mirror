@@ -24,4 +24,4 @@ jobs:
       - name: Download
         run: ./download-doxygen.sh "$VERSION"
       - name: Upload
-        run: jfrog rt u ${{ github.event.inputs.version }}/  generic-release-mirror/doxygen/
+        run: ./upload-mirror.sh "$VERSION"
